@@ -857,14 +857,14 @@ public class AddressBook {
     /**
      * Creates a person from the given data.
      *
-     * @param name of person
      * @param phone without data prefix
      * @param email without data prefix
      * @return constructed person
      */
-    private static String[] makePersonFromData(String name, String phone, String email) {
+    private static String[] makePersonFromData(String phone, String email) {
+        String name1 = extractNameFromPersonString(encoded);
         final String[] person = new String[PERSON_DATA_COUNT];
-        person[PERSON_DATA_INDEX_NAME] = name;
+        person[PERSON_DATA_INDEX_NAME] = name1;
         person[PERSON_DATA_INDEX_PHONE] = phone;
         person[PERSON_DATA_INDEX_EMAIL] = email;
         return person;
@@ -916,9 +916,8 @@ public class AddressBook {
             return Optional.empty();
         }
         final String[] decodedPerson = makePersonFromData(
-                extractNameFromPersonString(encoded),
                 extractPhoneFromPersonString(encoded),
-                extractEmailFromPersonString(encoded),
+                extractEmailFromPersonString(encoded), extractNameFromPersonString(encoded),
         );
         // check that the constructed person is valid
         return isPersonDataValid(decodedPerson) ? Optional.of(decodedPerson) : Optional.empty();
