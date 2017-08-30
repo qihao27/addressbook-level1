@@ -14,14 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /*
  * NOTE : =============================================================
@@ -874,6 +867,14 @@ public class AddressBook {
         person[PERSON_DATA_INDEX_PHONE] = phone;
         person[PERSON_DATA_INDEX_EMAIL] = email;
         return person;
+    }
+    private static HashMap<> storePersonData(String name, String phone, String email) {
+        private enum personDataEnum {NAME, PHONE, EMAIL};
+        HashMap<personDataEnum,String> temp = new HashMap<>();
+        temp.put(personDataEnum.NAME, name);
+        temp.put(personDataEnum.PHONE, phone);
+        temp.put(personDataEnum.EMAIL, email);
+        return temp;    //String name = temp.get(NAME);
     }
 
     /**
