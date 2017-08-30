@@ -868,14 +868,7 @@ public class AddressBook {
         person[PERSON_DATA_INDEX_EMAIL] = email;
         return person;
     }
-    private static HashMap<> storePersonData(String name, String phone, String email) {
-        private enum personDataEnum {NAME, PHONE, EMAIL};
-        HashMap<personDataEnum,String> temp = new HashMap<>();
-        temp.put(personDataEnum.NAME, name);
-        temp.put(personDataEnum.PHONE, phone);
-        temp.put(personDataEnum.EMAIL, email);
-        return temp;    //String name = temp.get(NAME);
-    }
+
 
     /**
      * Encodes a person into a decodable and readable string representation.
@@ -1070,8 +1063,12 @@ public class AddressBook {
      * @return whether arg is a valid person email
      */
     private static boolean isPersonEmailValid(String email) {
-        return email.matches("\\S+@\\S+\\.\\S+"); // email is [non-whitespace]@[non-whitespace].[non-whitespace]
+        //return email.matches("\\S+@\\S+\\.\\S+"); // email is [non-whitespace]@[non-whitespace].[non-whitespace]
         //TODO: implement a more permissive validation
+        if (!email.contains(" ") && email.contains("@") && email.contains("."))
+            return true;
+        else
+            return false;
     }
 
 
