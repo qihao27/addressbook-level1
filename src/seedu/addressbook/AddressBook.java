@@ -860,10 +860,9 @@ public class AddressBook {
      * @param name of person
      * @param phone without data prefix
      * @param email without data prefix
-     * @param testRefactor
      * @return constructed person
      */
-    private static String[] makePersonFromData(String name, String phone, String email, String testRefactor) {
+    private static String[] makePersonFromData(String name, String phone, String email) {
         final String[] person = new String[PERSON_DATA_COUNT];
         person[PERSON_DATA_INDEX_NAME] = name;
         person[PERSON_DATA_INDEX_PHONE] = phone;
